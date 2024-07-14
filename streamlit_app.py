@@ -77,7 +77,7 @@ st.image(box + imageName, use_column_width=True)
 st.write("The crop according to the bounding box. See the low amount of data in which the individual points of the object are barely visible.")
 st.image(crop + imageName, use_column_width=True)
 
-getWidth = streamlit_js_eval(js_expressions='screen.width', want_output = True, key = 'SCR')
+getWidth = streamlit_js_eval(js_expressions='window.innerWidth', key='WIDTH',  want_output = True,) 
 
 st.write("I use a custom trained super resolution model to increase the image resolution. As you can see, it works on some images and fails on most.")
 # render image-comparison
