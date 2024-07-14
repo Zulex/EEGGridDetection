@@ -1,6 +1,8 @@
 import streamlit as st
 from streamlit_image_comparison import image_comparison
 import os
+from streamlit_js_eval import streamlit_js_eval
+
 
 st.set_page_config(page_title="Image-Comparison Example", layout="centered")
 
@@ -75,7 +77,7 @@ st.image(box + imageName, use_column_width=True)
 st.write("The crop according to the bounding box. See the low amount of data in which the individual points of the object are barely visible.")
 st.image(crop + imageName, use_column_width=True)
 
-
+getWidth = streamlit_js_eval(js_expressions='screen.width', want_output = True, key = 'SCR')
 
 st.write("I use a custom trained super resolution model to increase the image resolution. As you can see, it works on some images and fails on most.")
 # render image-comparison
@@ -90,6 +92,6 @@ st.write("Finally, using a custom trained keypoint detection model to detect ind
 image_comparison(
     img1= cropPose + imageName,
     img2= superPose + imageName,
-    make_responsive=True
+    width = getWidth
 )
 
