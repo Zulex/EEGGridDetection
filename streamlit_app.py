@@ -70,7 +70,7 @@ with col3:
 imageName = image_names[st.session_state.current_index]
 
 st.write("The original image with the first model detecting the object and its bounding active.")
-st.image(box + imageName, width=720)
+st.image(box + imageName, use_column_width=True)
 
 st.write("The crop according to the bounding box. See the low amount of data in which the individual points of the object are barely visible.")
 st.image(crop + imageName, width=720)
