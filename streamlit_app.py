@@ -5,7 +5,7 @@ st.set_page_config(page_title="Image-Comparison Example", layout="centered")
 
 st.title("EEG Grid detection")
 st.write("This page presents a visualization of our project aimed at estimating the depth of small, non-rigid objects. Please note that these are preliminary results and are not intended for real-world application. The images used are sourced from a single video session, and the AI models have been trained on synthetic data.")
-st.write("We use three different models in three steps. First we detect the object and its bounding box. Secondly we increase the resolution and lastly we detect the individual points of interest.")
+st.write("I use three different models in three steps. First I detect the object and its bounding box. Secondly I increase the resolution and lastly I detect the individual points of interest.")
 
 
 imageName = "100.png"
@@ -25,7 +25,7 @@ st.image(crop + imageName, width=720)
 
 
 
-st.write("We use a custom trained super resolution model to increase the image resolution. As you can see, it works on some images and fails on most.")
+st.write("I use a custom trained super resolution model to increase the image resolution. As you can see, it works on some images and fails on most.")
 # render image-comparison
 image_comparison(
     img1= crop + imageName,
