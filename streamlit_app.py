@@ -84,7 +84,7 @@ st.write("I use a custom trained super resolution model to increase the image re
 image_comparison(
     img1= crop + imageName,
     img2= super + imageName,
-    make_responsive=True
+    width = getWidth
 )
 
 st.write("Finally, using a custom trained keypoint detection model to detect individual points. These points are labeled. When the cables are detected correctly and the points of the circles align relatively well, we can assume the individual points are correctly labeled.")
