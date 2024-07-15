@@ -7,7 +7,7 @@ from streamlit_js_eval import streamlit_js_eval
 st.set_page_config(page_title="Image-Comparison Example", layout="centered")
 
 st.title("EEG Grid detection")
-st.write("This page presents a visualization of our project aimed at estimating the depth of small, non-rigid objects. Please note that these are preliminary results and are not intended for real-world application. The images used are sourced from a single video session, and the AI models have been trained on synthetic data.")
+st.write("This page presents a visualization of my experimentation and learning project aimed at estimating the depth of small, non-rigid objects. Please note that these are preliminary results and are not intended for real-world application. The images used are sourced from a single video session, and the AI models have been trained on synthetic data.")
 st.write("I use three different models in three steps. First I detect the object and its bounding box. Secondly I increase the resolution and lastly I detect the individual points of interest.")
 
 
@@ -17,8 +17,6 @@ cropPose = "data/cropPose/"
 initial = "data/initial/"
 super = "data/super/"
 superPose = "data/superPose/"
-
-col1, col2, col3 = st.columns(3)
 
 
 
@@ -40,11 +38,6 @@ if 'imageName' not in st.session_state:
 def update_index(delta):
     st.session_state.current_index = (st.session_state.current_index + delta) % len(image_names)
 
-def display_filename():
-    filename = image_names[st.session_state.current_index]
-    with col2:
-        st.write(filename)
-
 def next_quote():
     if st.session_state.current_index + 1 >= len(image_names):
         st.session_state.current_index = 0
@@ -57,17 +50,11 @@ def previous_quote():
 
 
 
-display_filename()
 
 
 
-with col1:
-    if st.button("⏮️ Previous", on_click=previous_quote):
-        pass
 
-with col3:
-    if st.button("Next ⏭️", on_click=next_quote):
-        pass
+
 
 imageName = image_names[st.session_state.current_index]
 
@@ -94,4 +81,22 @@ image_comparison(
     img2= superPose + imageName,
     width = getWidth
 )
+
+
+def display_filename():
+    filename = image_names[st.session_state.current_index]
+    with col2:
+        st.write(filename)
+
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    if st.button("⏮️ Previous", on_click=previous_quote):
+        pass
+
+with col3:
+    if st.button("Next ⏭️", on_click=next_quote):
+        pass
+display_filename()
 
